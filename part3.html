@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        #output{
+            border: 5px dashed green;
+        }
+    </style>
+    <script>
+        var stringArray;
+        function createArr() {
+          stringArray = document.getElementById('output').value.split('\n');
+          console.log(stringArray);
+        }
+        function eraseText() {
+            document.getElementById("output").value = "";
+        }
+        function capitalize() {
+          //document.getElementById("output").value =document.getElementById("output").value.toUpperCase();
+          for (var i = 0; i < stringArray.length; i++) {
+            stringArray[i] = stringArray[i].toUpperCase();
+          }
+          document.getElementById("output").value = stringArray.toString().replaceAll(",","\n");
+        }
+        function sort() {
+          stringArray.sort();
+          document.getElementById("output").value = stringArray.toString().replaceAll(",","\n");
+        }
+        function revers() {
+          stringArray.reverse();
+          document.getElementById("output").value = stringArray.toString().replaceAll(",","\n");
+        }
+        function strip() {
+          stringArray = stringArray.filter( (el) => {
+            return el != "";
+          });
+          document.getElementById("output").value = stringArray.toString().replaceAll(",","\n");
+        }
+        function addNum(){
+          for (var i = 0; i < stringArray.length; i++) {
+            if(/^([0-9]+.)/.test(stringArray[i])){
+              break;
+            }
+            stringArray[i] = (i+1) + '. ' + stringArray[i];
+          }
+          document.getElementById("output").value = stringArray.toString().replaceAll(",","\n");
+        }
+        function shuffle(){
+          var j, temp;
+          var len = stringArray.length;
+          for (var i = 0; i < len; i++) {
+            j = Math.floor(Math.random()*len);
+            temp = stringArray[i]
+            stringArray[i] = stringArray[j];
+            stringArray[j] = temp;
+          }
+          document.getElementById("output").value = stringArray.toString().replaceAll(",","\n");
+        }
+    </script>
+    <title>Document</title>
+</head>
+<body style="background: gray;">
+    <h1>Magic!</h1>
+    <textarea name="name" rows="20" cols="80" id="output" onkeyup="createArr();"></textarea>
+    <div>
+        <button onclick="eraseText();">Clear it</button>
+        <button onclick="capitalize();">Capitalize</button>
+        <button onclick="sort();">Sort</button>
+        <button onclick="revers();">Reverse</button>
+        <button onclick="strip();">Strip Blank</button>
+        <button onclick="addNum();">Add Numbers</button>
+        <button onclick="shuffle();">Shuffle</button>
+    </div>
+
+</body>
+</html>

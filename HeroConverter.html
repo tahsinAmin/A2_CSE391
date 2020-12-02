@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Hero Converter</title>
+    <style media="screen">
+      .converter{
+        border: 2px solid black;
+        padding: 5px;
+        width: 50vw;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="converter" style="display:flex;">
+      Convert
+      <input type="number" name="" id="inputValue">
+      <select id="selectedValue" name="">
+        <option value="lbtokg">lb to kg</option>
+        <option value="kgtolb">kg to lb</option>
+      </select>
+      <button type="button" name="button" onclick="convert();">Go</button>
+      <p id="p-tag" style="margin:0 5px; padding: 0"></p>
+    </div>
+    <script type="text/javascript">
+      function convert(){
+        var x = document.getElementById("inputValue").value;
+        var selectedValue = document.getElementById("selectedValue").value;
+        x= Number(x);
+        if(selectedValue == "lbtokg"){
+          x *= 0.4536;
+          x+= " Kilograms"
+        }else{
+          x*= 2.2046;
+          x+= " Pounds"
+        }
+        document.getElementById("p-tag").innerHTML=x;
+      }
+    </script>
+  </body>
+</html>

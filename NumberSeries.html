@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        function show(){
+            console.log("Hello");
+            var s= document.myForm.inputValue.value;
+            var numArr = s.split(',');
+
+            for(let i = 0; i < numArr.length; i++){
+                numArr[i] = parseFloat(numArr[i]);
+            }
+            <!-- console.log(numArr); -->
+
+            var max = Math.max(...numArr);
+            var min = Math.min(...numArr);
+            var sum = numArr.reduce((a, b) => {
+                return a + b;
+            });
+            var avg = sum/numArr.length;
+            numArr.reverse();
+
+            document.getElementById("maxVal").innerHTML = max;
+            document.getElementById("minVal").innerHTML = min;
+            document.getElementById("sumV").innerHTML = sum;
+            document.getElementById("avg").innerHTML = avg;
+            document.getElementById("rvs").innerHTML = (numArr);
+        }
+    </script>
+</head>
+<body>
+    <form name="myForm">
+        Input series of numbers: <input name="inputValue" type="text" onkeyup="show();" ><br>
+        Max: <span id="maxVal"></span><br>
+        Min: <span id="minVal"></span><br>
+        sum: <span id="sumV"></span><br>
+        Average: <span id="avg"></span><br>
+        Reverse: <span id="rvs"></span><br>
+    </form>
+
+</body>
+</html>
